@@ -11,6 +11,7 @@ export const ProductsListPage = () => {
   const dispatch = useAppDispatch();
   const { items: products, status, sortKey } = useAppSelector((state) => state.products);
 
+  // Стан для керування модальними вікнами
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const [productToDelete, setProductToDelete] = useState<Product | null>(null);
 
@@ -23,8 +24,7 @@ export const ProductsListPage = () => {
   const sortedProducts = useMemo(() => {
     return [...products].sort((a, b) => {
       if (sortKey === 'name') {
-        const nameComparison = a.name.localeCompare(b.name);
-        if (nameComparison !== 0) return nameComparison;
+        return a.name.localeCompare(b.name);
       }
       return a.count - b.count;
     });
@@ -34,7 +34,7 @@ export const ProductsListPage = () => {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
         <h1>Список Продуктів</h1>
         <div>
           <label>Сортувати за: </label>
@@ -42,7 +42,7 @@ export const ProductsListPage = () => {
             <option value="name">Назвою</option>
             <option value="count">Кількістю</option>
           </select>
-          <button onClick={() => setAddModalOpen(true)} style={{ marginLeft: '10px', backgroundColor: '#2ecc71', color: 'white' }}>
+          <button onClick={() => setAddModalOpen(true)} style={{ marginLeft: '10px', backgroundColor: '#2ecc71', color: 'white', border: 'none', padding: '10px 15px', borderRadius: '8px', cursor: 'pointer' }}>
             Додати Продукт
           </button>
         </div>
@@ -50,8 +50,10 @@ export const ProductsListPage = () => {
       
       <ProductList products={sortedProducts} onDelete={(product) => setProductToDelete(product)} />
 
+      {/* Модальне вікно для додавання/редагування */}
       {isAddModalOpen && <AddEditProductModal onClose={() => setAddModalOpen(false)} />}
       
+      {/* Модальне вікно для підтвердження видалення */}
       {productToDelete && (
         <DeleteConfirmModal
           product={productToDelete}

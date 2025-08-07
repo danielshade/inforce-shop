@@ -1,7 +1,7 @@
 // "Зріз" (slice) стану для продуктів
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Product } from '../../types/models';
-import { fetchProducts, addProduct, deleteProduct, updateProduct } from './productsThunks';
+import { fetchProducts, addProduct, deleteProduct, updateProduct, addComment, deleteComment } from './productsThunks';
 
 export type SortKey = 'name' | 'count';
 
@@ -46,7 +46,20 @@ const productsSlice = createSlice({
       .addCase(deleteProduct.fulfilled, (state, action: PayloadAction<number>) => {
         state.items = state.items.filter((p) => p.id !== action.payload);
       })
+      // Всі наступні дії оновлюють існуючий продукт, тому логіка однакова
       .addCase(updateProduct.fulfilled, (state, action: PayloadAction<Product>) => {
+        const index = state.items.findIndex((p) => p.id === action.payload.id);
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
+      })
+      .addCase(addComment.fulfilled, (state, action: PayloadAction<Product>) => {
+        const index = state.items.findIndex((p) => p.id === action.payload.id);
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
+      })
+      .addCase(deleteComment.fulfilled, (state, action: PayloadAction<Product>) => {
         const index = state.items.findIndex((p) => p.id === action.payload.id);
         if (index !== -1) {
           state.items[index] = action.payload;

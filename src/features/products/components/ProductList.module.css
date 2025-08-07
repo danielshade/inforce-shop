@@ -1,0 +1,7 @@
+.productList {
+  display: grid;
+  /* Створюємо колонки, які автоматично заповнюють простір */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px; /* Проміжок між картками */
+  padding-top: 20px;
+}

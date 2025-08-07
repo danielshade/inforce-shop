@@ -21,8 +21,8 @@ export const DeleteConfirmModal: React.FC<Props> = ({ product, onClose }) => {
     <Modal title="Підтвердити видалення" onClose={onClose}>
       <p>Ви впевнені, що хочете видалити продукт "<strong>{product.name}</strong>"?</p>
       <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', marginTop: '20px' }}>
-        <button onClick={onClose}>Скасувати</button>
-        <button onClick={handleConfirm} style={{backgroundColor: '#e74c3c', color: 'white'}}>Видалити</button>
+        <button type="button" onClick={onClose} style={{padding: '10px 20px', border: '1px solid #ddd', borderRadius: '8px', cursor: 'pointer'}}>Скасувати</button>
+        <button onClick={handleConfirm} style={{padding: '10px 20px', border: 'none', borderRadius: '8px', cursor: 'pointer', backgroundColor: '#e74c3c', color: 'white'}}>Видалити</button>
       </div>
     </Modal>
   );
