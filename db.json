@@ -1,0 +1,47 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "imageUrl": "https://images.prom.ua/4429952565_w640_h640_noutbuk-apple-macbook.webp",
+      "name": "Ноутбук Apple MacBook Air 13 M1",
+      "count": 15,
+      "size": {
+        "width": 304,
+        "height": 212
+      },
+      "weight": "1290g",
+      "comments": [
+        {
+          "id": 1,
+          "productId": 1,
+          "description": "Найкращий ноутбук за свої гроші!",
+          "date": "14:00 07.08.2025"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "imageUrl": "https://images.prom.ua/4949437199_w640_h640_naushniki-apple-airpods.webp",
+      "name": "Навушники Apple AirPods Pro 2",
+      "count": 42,
+      "size": {
+        "width": 60,
+        "height": 45
+      },
+      "weight": "50g",
+      "comments": []
+    },
+    {
+      "id": 3,
+      "imageUrl": "https://images.prom.ua/3994320299_w640_h640_igrovaya-pristavka-sony.webp",
+      "name": "Ігрова приставка Sony PlayStation 5",
+      "count": 8,
+      "size": {
+        "width": 390,
+        "height": 104
+      },
+      "weight": "4500g",
+      "comments": []
+    }
+  ]
+}
